@@ -1,0 +1,92 @@
+{
+	"name": "MW_EXT_SEO",
+	"version": "1.0.0",
+	"author": [
+		"[https://kitsune.solar/ Kitsune Solar]",
+		"[https://metastore.pro/ METASTORE]",
+		"..."
+	],
+	"url": "https://metastore.pro/",
+	"descriptionmsg": "mw-ext-seo-desc",
+	"license-name": "[https://www.gnu.org/licenses/gpl-3.0.txt GPL-3.0]",
+	"type": "",
+	"require": {
+		"MediaWiki": ">= 1.30.0"
+	},
+	"config": {
+		"EXT_SEO_Phone": {
+			"value": ""
+		},
+		"EXT_SEO_Publisher": {
+			"value": ""
+		},
+		"EXT_SEO_PublisherLogo": {
+			"value": ""
+		},
+		"EXT_SEO_Manifest": {
+			"value": ""
+		},
+		"EXT_SEO_URL_Vk": {
+			"value": ""
+		},
+		"EXT_SEO_URL_Facebook": {
+			"value": ""
+		},
+		"EXT_SEO_URL_Twitter": {
+			"value": ""
+		},
+		"EXT_SEO_URL_Discord": {
+			"value": ""
+		},
+		"EXT_SEO_ThemeColor": {
+			"value": "#f3f6f9"
+		},
+		"EXT_SEO_MSTileColor": {
+			"value": "#f3f6f9"
+		},
+		"EXT_SEO_Twitter_Site": {
+			"value": "metadata_team"
+		},
+		"EXT_SEO_Twitter_Creator": {
+			"value": "metadata_team"
+		},
+		"EXT_SEO_StreetAddress": {
+			"value": ""
+		},
+		"EXT_SEO_AddressLocality": {
+			"value": "Moscow"
+		},
+		"EXT_SEO_AddressRegion": {
+			"value": ""
+		},
+		"EXT_SEO_PostalCode": {
+			"value": ""
+		},
+		"EXT_SEO_AddressCountry": {
+			"value": "RUS"
+		},
+		"EXT_SEO_ContactType": {
+			"value": "customer service"
+		},
+		"EXT_SEO_AuthorName": {
+			"value": "SYSTEM"
+		},
+		"EXT_SEO_ArticlePublisher": {
+			"value": ""
+		}
+	},
+	"AutoloadClasses": {
+		"MW_EXT_SEO": "MW_EXT_SEO.class.php"
+	},
+	"Hooks": {
+		"OutputPageParserOutput": [
+			"MW_EXT_SEO::onOutputPageParserOutput"
+		]
+	},
+	"MessagesDirs": {
+		"MW_EXT_SEO": [
+			"i18n"
+		]
+	},
+	"manifest_version": 2
+}
