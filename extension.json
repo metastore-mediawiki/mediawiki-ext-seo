@@ -11,7 +11,7 @@
 	"license-name": "[https://www.gnu.org/licenses/gpl-3.0.txt GPL-3.0]",
 	"type": "",
 	"require": {
-		"MediaWiki": ">= 1.30.0"
+		"MediaWiki": ">= 1.31.0"
 	},
 	"config": {
 		"EXT_SEO_Phone": {
@@ -76,11 +76,11 @@
 		}
 	},
 	"AutoloadClasses": {
-		"MW_EXT_SEO": "MW_EXT_SEO.class.php"
+		"MediaWiki\\Extension\\MW_EXT_SEO\\MW_EXT_SEO": "MW_EXT_SEO.class.php"
 	},
 	"Hooks": {
 		"OutputPageParserOutput": [
-			"MW_EXT_SEO::onOutputPageParserOutput"
+			"MediaWiki\\Extension\\MW_EXT_SEO\\MW_EXT_SEO::onOutputPageParserOutput"
 		]
 	},
 	"MessagesDirs": {

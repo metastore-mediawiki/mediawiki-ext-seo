@@ -1,9 +1,19 @@
 <?php
 
+namespace MediaWiki\Extension\MW_EXT_SEO;
+
+use OutputPage;
+use ParserOutput;
+use DateTime;
+use ContentHandler;
+use RequestContext;
+use Revision;
+use User;
+use Html;
+
 /**
  * Class MW_EXT_SEO
  * ------------------------------------------------------------------------------------------------------------------ */
-
 class MW_EXT_SEO {
 
 	/**
@@ -23,15 +33,15 @@ class MW_EXT_SEO {
 	/**
 	 * Get configuration parameters.
 	 *
-	 * @param $getData
+	 * @param $config
 	 *
 	 * @return mixed
-	 * @throws ConfigException
+	 * @throws \ConfigException
 	 * -------------------------------------------------------------------------------------------------------------- */
 
-	private static function getConfig( $getData ) {
-		$context   = new RequestContext();
-		$getConfig = $context->getConfig()->get( $getData );
+	private static function getConfig( $config ) {
+		$context   = RequestContext::getMain()->getConfig();
+		$getConfig = $context->get( $config );
 
 		return $getConfig;
 	}
@@ -39,10 +49,11 @@ class MW_EXT_SEO {
 	/**
 	 * Get "getTitle".
 	 *
-	 * @return null|Title
+	 * @return null|\Title
 	 * -------------------------------------------------------------------------------------------------------------- */
+
 	private static function getTitle() {
-		$context  = new RequestContext();
+		$context  = RequestContext::getMain();
 		$getTitle = $context->getTitle();
 
 		return $getTitle;
@@ -51,11 +62,12 @@ class MW_EXT_SEO {
 	/**
 	 * Get "getWikiPage".
 	 *
-	 * @return WikiPage
-	 * @throws MWException
+	 * @return \WikiPage
+	 * @throws \MWException
 	 * -------------------------------------------------------------------------------------------------------------- */
+
 	private static function getWikiPage() {
-		$context     = new RequestContext();
+		$context     = RequestContext::getMain();
 		$getWikiPage = $context->getWikiPage();
 
 		return $getWikiPage;
@@ -68,8 +80,8 @@ class MW_EXT_SEO {
 	 * @param ParserOutput $parserOutput
 	 *
 	 * @return bool
-	 * @throws ConfigException
-	 * @throws MWException
+	 * @throws \ConfigException
+	 * @throws \MWException
 	 * -------------------------------------------------------------------------------------------------------------- */
 
 	public static function onRenderSEO( OutputPage $out, ParserOutput $parserOutput ) {
@@ -414,14 +426,14 @@ class MW_EXT_SEO {
 	 * @param ParserOutput $parserOutput
 	 *
 	 * @return bool
-	 * @throws ConfigException
-	 * @throws MWException
+	 * @throws \ConfigException
+	 * @throws \MWException
 	 * -------------------------------------------------------------------------------------------------------------- */
 
 	public static function onOutputPageParserOutput( OutputPage $out, ParserOutput $parserOutput ) {
 
 		if ( ! self::getTitle() || ! self::getTitle()->isContentPage() || ! self::getWikiPage() ) {
-			return false;
+			return null;
 		}
 
 		self::onRenderSEO( $out, $parserOutput );
