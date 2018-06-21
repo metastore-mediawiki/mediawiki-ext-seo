@@ -2,14 +2,7 @@
 
 namespace MediaWiki\Extension\MW_EXT_SEO;
 
-use ContentHandler;
-use DateTime;
-use Html;
-use OutputPage;
-use ParserOutput;
-use RequestContext;
-use Revision;
-use User;
+use ContentHandler, DateTime, Html, OutputPage, ParserOutput, RequestContext, Revision, User;
 
 /**
  * Class MW_EXT_SEO
