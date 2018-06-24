@@ -2,69 +2,13 @@
 
 namespace MediaWiki\Extension\MW_EXT_SEO;
 
-use ContentHandler, DateTime, Html, OutputPage, ParserOutput, RequestContext, Revision, User;
+use ContentHandler, DateTime, Html, OutputPage, ParserOutput, Revision, User;
+use MediaWiki\Extension\MW_EXT_Core\MW_EXT_Core;
 
 /**
  * Class MW_EXT_SEO
  * ------------------------------------------------------------------------------------------------------------------ */
 class MW_EXT_SEO {
-
-	/**
-	 * Clear DATA (escape html).
-	 *
-	 * @param $string
-	 *
-	 * @return string
-	 * -------------------------------------------------------------------------------------------------------------- */
-
-	private static function clearData( $string ) {
-		$outString = htmlspecialchars( trim( $string ), ENT_QUOTES );
-
-		return $outString;
-	}
-
-	/**
-	 * Get configuration parameters.
-	 *
-	 * @param $config
-	 *
-	 * @return mixed
-	 * @throws \ConfigException
-	 * -------------------------------------------------------------------------------------------------------------- */
-
-	private static function getConfig( $config ) {
-		$context   = RequestContext::getMain()->getConfig();
-		$getConfig = $context->get( $config );
-
-		return $getConfig;
-	}
-
-	/**
-	 * Get "getTitle".
-	 *
-	 * @return null|\Title
-	 * -------------------------------------------------------------------------------------------------------------- */
-
-	private static function getTitle() {
-		$context  = RequestContext::getMain();
-		$getTitle = $context->getTitle();
-
-		return $getTitle;
-	}
-
-	/**
-	 * Get "getWikiPage".
-	 *
-	 * @return \WikiPage
-	 * @throws \MWException
-	 * -------------------------------------------------------------------------------------------------------------- */
-
-	private static function getWikiPage() {
-		$context     = RequestContext::getMain();
-		$getWikiPage = $context->getWikiPage();
-
-		return $getWikiPage;
-	}
 
 	/**
 	 * Render function.
@@ -79,45 +23,45 @@ class MW_EXT_SEO {
 
 	public static function onRenderSEO( OutputPage $out, ParserOutput $parserOutput ) {
 		// Get custom info.
-		$getSiteURL   = self::getConfig( 'Server' );
-		$getSiteName  = self::clearData( self::getConfig( 'Sitename' ) );
-		$getSiteEmail = self::getConfig( 'EmergencyContact' );
-		$getSiteLogo  = self::getConfig( 'Logo' );
-		$getFavicon   = self::getConfig( 'Favicon' );
+		$getSiteURL   = MW_EXT_Core::getConfig( 'Server' );
+		$getSiteName  = MW_EXT_Core::outClear( MW_EXT_Core::getConfig( 'Sitename' ) );
+		$getSiteEmail = MW_EXT_Core::getConfig( 'EmergencyContact' );
+		$getSiteLogo  = MW_EXT_Core::getConfig( 'Logo' );
+		$getFavicon   = MW_EXT_Core::getConfig( 'Favicon' );
 
 		// Get extension info.
-		$getSitePhone        = self::getConfig( 'EXT_SEO_Phone' );
-		$getPublisher        = self::getConfig( 'EXT_SEO_Publisher' );
-		$getPublisherLogo    = self::getConfig( 'EXT_SEO_PublisherLogo' );
-		$getManifest         = self::getConfig( 'EXT_SEO_Manifest' );
-		$getURL_Vk           = self::getConfig( 'EXT_SEO_URL_Vk' );
-		$getURL_Facebook     = self::getConfig( 'EXT_SEO_URL_Facebook' );
-		$getURL_Twitter      = self::getConfig( 'EXT_SEO_URL_Twitter' );
-		$getURL_Discord      = self::getConfig( 'EXT_SEO_URL_Discord' );
-		$getThemeColor       = self::getConfig( 'EXT_SEO_ThemeColor' );
-		$getMSTileColor      = self::getConfig( 'EXT_SEO_MSTileColor' );
-		$getTwitter_Site     = self::getConfig( 'EXT_SEO_Twitter_Site' );
-		$getTwitter_Creator  = self::getConfig( 'EXT_SEO_Twitter_Creator' );
-		$getStreetAddress    = self::getConfig( 'EXT_SEO_StreetAddress' );
-		$getAddressLocality  = self::getConfig( 'EXT_SEO_AddressLocality' );
-		$getAddressRegion    = self::getConfig( 'EXT_SEO_AddressRegion' );
-		$getPostalCode       = self::getConfig( 'EXT_SEO_PostalCode' );
-		$getAddressCountry   = self::getConfig( 'EXT_SEO_AddressCountry' );
-		$getContactType      = self::getConfig( 'EXT_SEO_ContactType' );
-		$getArticlePublisher = self::getConfig( 'EXT_SEO_ArticlePublisher' );
+		$getSitePhone        = MW_EXT_Core::getConfig( 'EXT_SEO_Phone' );
+		$getPublisher        = MW_EXT_Core::getConfig( 'EXT_SEO_Publisher' );
+		$getPublisherLogo    = MW_EXT_Core::getConfig( 'EXT_SEO_PublisherLogo' );
+		$getManifest         = MW_EXT_Core::getConfig( 'EXT_SEO_Manifest' );
+		$getURL_Vk           = MW_EXT_Core::getConfig( 'EXT_SEO_URL_Vk' );
+		$getURL_Facebook     = MW_EXT_Core::getConfig( 'EXT_SEO_URL_Facebook' );
+		$getURL_Twitter      = MW_EXT_Core::getConfig( 'EXT_SEO_URL_Twitter' );
+		$getURL_Discord      = MW_EXT_Core::getConfig( 'EXT_SEO_URL_Discord' );
+		$getThemeColor       = MW_EXT_Core::getConfig( 'EXT_SEO_ThemeColor' );
+		$getMSTileColor      = MW_EXT_Core::getConfig( 'EXT_SEO_MSTileColor' );
+		$getTwitter_Site     = MW_EXT_Core::getConfig( 'EXT_SEO_Twitter_Site' );
+		$getTwitter_Creator  = MW_EXT_Core::getConfig( 'EXT_SEO_Twitter_Creator' );
+		$getStreetAddress    = MW_EXT_Core::getConfig( 'EXT_SEO_StreetAddress' );
+		$getAddressLocality  = MW_EXT_Core::getConfig( 'EXT_SEO_AddressLocality' );
+		$getAddressRegion    = MW_EXT_Core::getConfig( 'EXT_SEO_AddressRegion' );
+		$getPostalCode       = MW_EXT_Core::getConfig( 'EXT_SEO_PostalCode' );
+		$getAddressCountry   = MW_EXT_Core::getConfig( 'EXT_SEO_AddressCountry' );
+		$getContactType      = MW_EXT_Core::getConfig( 'EXT_SEO_ContactType' );
+		$getArticlePublisher = MW_EXT_Core::getConfig( 'EXT_SEO_ArticlePublisher' );
 
 		// Get system info.
-		$getDateCreated    = DateTime::createFromFormat( 'YmdHis', self::getTitle()->getEarliestRevTime() );
-		$getDateModified   = DateTime::createFromFormat( 'YmdHis', self::getTitle()->getTouched() );
-		$getFirstRevision  = self::getTitle()->getFirstRevision();
+		$getDateCreated    = DateTime::createFromFormat( 'YmdHis', MW_EXT_Core::getTitle()->getEarliestRevTime() );
+		$getDateModified   = DateTime::createFromFormat( 'YmdHis', MW_EXT_Core::getTitle()->getTouched() );
+		$getFirstRevision  = MW_EXT_Core::getTitle()->getFirstRevision();
 		$getImage          = key( $out->getFileSearchOptions() );
 		$getImageObject    = wfFindFile( $getImage );
-		$getRevision       = self::getWikiPage()->getRevision();
-		$getHeadline       = self::clearData( self::getTitle()->getText() );
+		$getRevision       = MW_EXT_Core::getWikiPage()->getRevision();
+		$getHeadline       = MW_EXT_Core::outClear( MW_EXT_Core::getTitle()->getText() );
 		$getAltHeadline    = $getHeadline;
-		$getKeywords       = self::clearData( str_replace( 'Категория:', '', implode( ', ', array_keys( self::getTitle()->getParentCategories() ) ) ) );
-		$getWordCount      = self::getTitle()->getLength();
-		$getArticleURL     = self::getTitle()->getFullURL();
+		$getKeywords       = MW_EXT_Core::outClear( str_replace( 'Категория:', '', implode( ', ', array_keys( MW_EXT_Core::getTitle()->getParentCategories() ) ) ) );
+		$getWordCount      = MW_EXT_Core::getTitle()->getLength();
+		$getArticleURL     = MW_EXT_Core::getTitle()->getFullURL();
 		$getArticleID      = $getArticleURL;
 		$getExtDescription = $parserOutput->getProperty( 'description' ); // Set by "Description2" extension.
 
@@ -136,7 +80,7 @@ class MW_EXT_SEO {
 			$getArticleText = '';
 		}
 
-		$getArticleBody = self::clearData( $getArticleText );
+		$getArticleBody = MW_EXT_Core::outClear( $getArticleText );
 
 		// Get article created date.
 		$getDateCreated = $getDateCreated ? $getDateCreated->format( 'c' ) : '0';
@@ -149,11 +93,11 @@ class MW_EXT_SEO {
 			$getUser           = User::newFromId( $getFirstRevision->getUser() );
 			$getUserName       = $getFirstRevision->getUserText();
 			$getUserGroups     = $getUser->getGroups();
-			$getAuthorName     = self::clearData( $getUserName );
+			$getAuthorName     = MW_EXT_Core::outClear( $getUserName );
 			$getAuthorURL      = $getUser->getUserPage()->getFullURL();
-			$getAuthorJobTitle = self::clearData( implode( ', ', array_values( $getUserGroups ) ) );
+			$getAuthorJobTitle = MW_EXT_Core::outClear( implode( ', ', array_values( $getUserGroups ) ) );
 		} else {
-			$getAuthorName     = self::getConfig( 'EXT_SEO_AuthorName' );
+			$getAuthorName     = MW_EXT_Core::getConfig( 'EXT_SEO_AuthorName' );
 			$getAuthorJobTitle = '';
 			$getAuthorURL      = '';
 		}
@@ -335,7 +279,7 @@ class MW_EXT_SEO {
 		// -------------------------------------------------------------------------------------------------------------
 
 		// OG type.
-		$getType = self::getTitle()->isMainPage() ? 'website' : 'article';
+		$getType = MW_EXT_Core::getTitle()->isMainPage() ? 'website' : 'article';
 
 		$og = [];
 
@@ -425,7 +369,7 @@ class MW_EXT_SEO {
 
 	public static function onOutputPageParserOutput( OutputPage $out, ParserOutput $parserOutput ) {
 
-		if ( ! self::getTitle() || ! self::getTitle()->isContentPage() || ! self::getWikiPage() ) {
+		if ( ! MW_EXT_Core::getTitle() || ! MW_EXT_Core::getTitle()->isContentPage() || ! MW_EXT_Core::getWikiPage() ) {
 			return null;
 		}
 
