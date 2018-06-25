@@ -215,7 +215,7 @@ class MW_EXT_SEO {
 		// Render dns.
 		foreach ( $dns as $key => $value ) {
 			if ( $value ) {
-				$out->addHeadItem( 'mw-ext-seo-dns-' . $key, '<link rel="dns-prefetch" href="' . $value . '"/>' );
+				//$out->addHeadItem( 'mw-ext-seo-dns-' . $key, '<link rel="dns-prefetch" href="' . $value . '"/>' );
 			}
 		}
 
