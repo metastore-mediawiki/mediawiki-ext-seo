@@ -205,11 +205,8 @@ class MW_EXT_SEO {
 
 		$dns = [
 			'//cdn.jsdelivr.net',
-			'//cdnjs.cloudflare.com',
 			'//fonts.googleapis.com',
 			'//use.fontawesome.com',
-			'//disqus.com',
-			'//github.com',
 		];
 
 		// Render dns.
