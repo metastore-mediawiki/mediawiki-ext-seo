@@ -7,7 +7,7 @@ use MediaWiki\Extension\MW_EXT_Core\MW_EXT_Core;
 
 /**
  * Class MW_EXT_SEO
- * ------------------------------------------------------------------------------------------------------------------ */
+ */
 class MW_EXT_SEO {
 
 	/**
@@ -19,8 +19,7 @@ class MW_EXT_SEO {
 	 * @return bool
 	 * @throws \ConfigException
 	 * @throws \MWException
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public static function onRenderSEO( OutputPage $out, ParserOutput $parserOutput ) {
 		// Get custom info.
 		$getSiteURL   = MW_EXT_Core::getConfig( 'Server' );
@@ -362,10 +361,8 @@ class MW_EXT_SEO {
 	 * @return bool
 	 * @throws \ConfigException
 	 * @throws \MWException
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public static function onOutputPageParserOutput( OutputPage $out, ParserOutput $parserOutput ) {
-
 		if ( ! MW_EXT_Core::getTitle() || ! MW_EXT_Core::getTitle()->isContentPage() || ! MW_EXT_Core::getWikiPage() ) {
 			return null;
 		}
