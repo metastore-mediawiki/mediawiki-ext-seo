@@ -1,9 +1,8 @@
 <?php
 
-namespace MediaWiki\Extension\MW_EXT_SEO;
+namespace MediaWiki\Extension\METADATA;
 
 use ContentHandler, DateTime, Html, OutputPage, ParserOutput, Revision, User;
-use MediaWiki\Extension\MW_EXT_Kernel\MW_EXT_Kernel;
 
 /**
  * Class MW_EXT_SEO

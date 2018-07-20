@@ -79,11 +79,11 @@
 		}
 	},
 	"AutoloadClasses": {
-		"MediaWiki\\Extension\\MW_EXT_SEO\\MW_EXT_SEO": "MW_EXT_SEO.class.php"
+		"MediaWiki\\Extension\\METADATA\\MW_EXT_SEO": "MW_EXT_SEO.class.php"
 	},
 	"Hooks": {
 		"OutputPageParserOutput": [
-			"MediaWiki\\Extension\\MW_EXT_SEO\\MW_EXT_SEO::onOutputPageParserOutput"
+			"MediaWiki\\Extension\\METADATA\\MW_EXT_SEO::onOutputPageParserOutput"
 		]
 	},
 	"MessagesDirs": {
