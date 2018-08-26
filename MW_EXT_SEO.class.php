@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\METADATA;
+namespace MediaWiki\Extension\MetaStore;
 
 use ContentHandler, DateTime, Html, OutputPage, ParserOutput, Revision, User;
 
