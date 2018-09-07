@@ -59,8 +59,8 @@ class MW_EXT_SEO {
 		$getAltHeadline    = $getHeadline;
 		$getKeywords       = MW_EXT_Kernel::outClear( str_replace( 'Категория:', '', implode( ', ', array_keys( MW_EXT_Kernel::getTitle()->getParentCategories() ) ) ) );
 		$getWordCount      = MW_EXT_Kernel::getTitle()->getLength();
-		$getArticleURL     = MW_EXT_Kernel::getTitle()->getFullURL();
-		$getArticleID      = $getArticleURL;
+		$getArticleURL     = $getSiteURL . '/' . '?curid=' . MW_EXT_Kernel::getTitle()->getArticleID();
+		$getArticleID      = $getSiteURL . '/' . '?curid=' . MW_EXT_Kernel::getTitle()->getArticleID();
 		$getExtDescription = $parserOutput->getProperty( 'description' ); // Set by "Description2" extension.
 
 		if ( $getExtDescription !== false ) {
